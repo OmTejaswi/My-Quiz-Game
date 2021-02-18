@@ -102,6 +102,7 @@ function setup(){
 function draw(){
 
   title2.hide();
+  instruct.hide();
 
   if(readpc >= 4){
     background("yellow")
@@ -140,6 +141,7 @@ function draw(){
     submit.hide();
     
     title2.show();
+    instruct.show();
      
 
     cons1 = createElement("h4").html(cons[0]+": " + cons[4]).position(200,250).style("color","red")
