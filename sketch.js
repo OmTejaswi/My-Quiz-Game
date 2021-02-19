@@ -22,6 +22,7 @@ var instruct;
 var cons = [];
 var names = [];
 var cons1, cons2, cons3, cons4;
+var con1, con2 , con3, con4, con5 , con6, con7, con8;
 
 var correctAns = 2;
 
@@ -63,6 +64,8 @@ function setup(){
   //database
   db = firebase.database();
 
+  result();
+
   db.ref("pc").on("value", function(data){
     readpc = data.val();
   })
@@ -97,7 +100,7 @@ function setup(){
    
   })
 
-  result();
+  
 }
 function draw(){
 
@@ -135,6 +138,7 @@ function draw(){
 
   if(readpc >= 4){
     textSize(30);
+
     title.hide();
     inputName.hide();
     inputAns.hide();
@@ -144,10 +148,10 @@ function draw(){
     instruct.show();
      
 
-    cons1 = createElement("h4").html(cons[0]+": " + cons[4]).position(200,250).style("color","red")
-    cons2 = createElement("h4").html(cons[1]+": " + cons[5]).position(200,280).style("color","red")
-    cons3 = createElement("h4").html(cons[2]+": " + cons[6]).position(200,310).style("color","red")
-    cons4 = createElement("h4").html(cons[3]+": " + cons[7]).position(200,340).style("color","red")
+    cons1 = createElement("h4").html(con1+": " + con5).position(200,250).style("color","red")
+    cons2 = createElement("h4").html(con2+": " + con6).position(200,280).style("color","red")
+    cons3 = createElement("h4").html(con3+": " + con7).position(200,310).style("color","red")
+    cons4 = createElement("h4").html(con4+": " + con8).position(200,340).style("color","red")
 
     
     
@@ -158,56 +162,57 @@ function draw(){
 
 async function result() {
  await db.ref("players/player1/answer").on("value", function(data){
-    cons.push(data.val());
+    con1 = data.val();
   })
 
  await db.ref("players/player2/answer").on("value", function(data){
-    cons.push(data.val());
+    con2 = data.val();
   })
 
   await db.ref("players/player3/answer").on("value", function(data){
-    cons.push(data.val());
+    con3 = data.val();
   })
   await db.ref("players/player4/answer").on("value", function(data){
-    cons.push(data.val());
+    con4 = data.val();
   })
 
 
 
 
   await db.ref("players/player1/name").on("value", function(data){
-    cons.push(data.val());
+    con5 = data.val();
   })
 
  await db.ref("players/player2/name").on("value", function(data){
-    cons.push(data.val());
+    con6 = data.val();
   })
 
   await db.ref("players/player3/name").on("value", function(data){
-    cons.push(data.val());
+    con7 = data.val();
   })
   await db.ref("players/player4/name").on("value", function(data){
-    cons.push(data.val());
+    con8 = data.val();
   })
 
    
 }
 
 async function colour() {
-  var finder = cons.findIndex(function(con){
-    return con == 2;
-  })   
-
-  if(finder === 0) {
-    cons1.style("color","green")
+ 
+  if(con1 == 2) {
+    cons1.style("color","green");
+    background("yellow");
   }
-  if(finder === 1) {
+  if(con2 == 2) {
     cons2.style("color","green")
+    background("yellow")
   }
-  if(finder === 2) {
+  if(con3 == 2) {
     cons3.style("color","green")
+    background("yellow")
   }
-  if(finder === 3) {
+  if(con4 == 2) {
     cons4.style("color","green")
+    background("yellow")
   }
 }
