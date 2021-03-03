@@ -71,7 +71,7 @@ function setup(){
   })
 
   db.ref("gs").on("value", function(data){
-    readgs = data.val();
+    gameState = data.val();
   })
 
   
